@@ -1,0 +1,16 @@
+{
+  "name": "SlidesToSheets",
+  "version": "1.0.0",
+  "description": "Converts slides into a googlesheets column",
+  "main": "index.js",
+  "author": "TommyChums <ricardofelix2@yahoo.com>",
+  "license": "MIT",
+  "scripts": {
+    "start": "node index.js"
+  },
+  "dependencies": {
+    "dotenv": "^8.2.0",
+    "googleapis": "^51.0.0",
+    "lodash": "^4.17.15"
+  }
+}
