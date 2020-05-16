@@ -5,6 +5,7 @@
   "main": "index.js",
   "author": "TommyChums <ricardofelix2@yahoo.com>",
   "license": "MIT",
+  "bin": "index.js",
   "scripts": {
     "start": "node index.js"
   },
