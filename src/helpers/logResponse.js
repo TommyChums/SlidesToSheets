@@ -6,6 +6,7 @@ const logResponse = (response, request) => {
     resp = response.response;
     error = resp && resp.data && resp.data.error && resp.data.error.message;
     type = resp && resp.config.url;
+    error = error || response;
   }
 
   const logObject = {

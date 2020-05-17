@@ -66,7 +66,7 @@ const getSlideData = async (slides) => {
 
   forEach(presentationSlides, ({ pageElements }) => {
     forEach(pageElements, ({ shape: { placeholder, text } }) => {
-      if (placeholder.type === 'TITLE') {
+      if (placeholder && placeholder.type === 'TITLE') {
         if (text && text.textElements) {
           forEach(text.textElements, (textElem) => {
             if (textElem && textElem.textRun) {
