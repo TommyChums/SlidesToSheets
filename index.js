@@ -69,7 +69,7 @@ const getSlideData = async (slides) => {
       if (placeholder && placeholder.type === 'TITLE') {
         if (text && text.textElements) {
           forEach(text.textElements, (textElem) => {
-            if (textElem && textElem.textRun) {
+            if (textElem && textElem.textRun && textElem.textRun.content) {
               title = cleanLines(textElem.textRun.content);
             }
           });
