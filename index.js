@@ -27,25 +27,33 @@ const updateMainSpreadSheetTitle = async (sheets, title) => {
     valueInputOption: 'USER_ENTERED',
     resource: {
       majorDimension: 'COLUMNS',
-      values: [ [ title ] ],
+      values: [[title]],
     },
   };
-  
+
   const resp = await sheets.updateSheetValues(updateParams)
   logResponse(resp, 'Update Main Spreadsheet Title');
 };
 
 const updateNotesSpreadSheetValues = async (sheets, values) => {
+  const clearParams = {
+    spreadsheetId: SPREADSHEET_ID,
+    range: `${NOTES_SHEET_NAME}!A2:A9999`,
+  };
+
+  const clearResp = await sheets.clearSheetValues(clearParams)
+  logResponse(clearResp, 'Clear Notes Spreadsheet Values');
+
   const updateParams = {
     spreadsheetId: SPREADSHEET_ID,
     range: `${NOTES_SHEET_NAME}!A2`,
     valueInputOption: 'USER_ENTERED',
     resource: {
       majorDimension: 'COLUMNS',
-      values: [ values ],
+      values: [values],
     },
   };
-  
+
   const resp = await sheets.updateSheetValues(updateParams)
   logResponse(resp, 'Update Notes Spreadsheet Values');
 };
@@ -66,11 +74,11 @@ const getSlideData = async (slides) => {
 
   forEach(presentationSlides, ({ pageElements }) => {
     forEach(pageElements, ({ shape: { placeholder, text } }) => {
-      if (placeholder && placeholder.type === 'TITLE') {
+      if (placeholder && placeholder.type.includes('TITLE')) {
         if (text && text.textElements) {
           forEach(text.textElements, (textElem) => {
             if (textElem && textElem.textRun && textElem.textRun.content) {
-              title = cleanLines(textElem.textRun.content);
+              title = cleanLines(textElem.textRun.content) || title;
             }
           });
         }
@@ -93,9 +101,11 @@ const getSlideData = async (slides) => {
     });
   });
 
-  if (cleanLines(singlePoint)) values.push(singlePoint);
+  if (cleanLines(singlePoint)) {
+    values.push(singlePoint.trim());
+  }
 
-  return [ values, title ];
+  return [values, title];
 };
 
 const Main = async () => {
@@ -104,7 +114,7 @@ const Main = async () => {
   const sheets = GoogleSheets(google);
   const slides = GoogleSlides(google);
 
-  const [ values, title ] = await getSlideData(slides);
+  const [values, title] = await getSlideData(slides);
 
   await updateNotesSpreadSheetValues(sheets, values);
   await updateMainSpreadSheetTitle(sheets, title);

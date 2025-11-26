@@ -7,11 +7,12 @@
   "license": "MIT",
   "bin": "index.js",
   "scripts": {
-    "start": "node index.js"
+    "start": "node index.js",
+    "pkg": "pkg . --out-path executables/"
   },
   "dependencies": {
     "dotenv": "^8.2.0",
-    "googleapis": "^51.0.0",
+    "googleapis": "^166.0.0",
     "lodash": "^4.17.15"
   }
 }

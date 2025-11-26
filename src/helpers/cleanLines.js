@@ -13,7 +13,7 @@ const cleanText = (text) => {
     }
   });
 
-  return everyNewWord.join(' ');
+  return everyNewWord.join(' ').trim();
 }
 
 module.exports = cleanText;
