@@ -4,6 +4,7 @@ const GoogleSheets = (google) => {
     getSheetInfo: (params) => sheets.spreadsheets.get(params),
     getSheetValues: (params) => sheets.spreadsheets.values.get(params),
     updateSheetValues: (params) => sheets.spreadsheets.values.update(params),
+    clearSheetValues: (params) => sheets.spreadsheets.values.clear(params),
   };
 };
 

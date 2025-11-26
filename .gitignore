@@ -1,2 +1,17 @@
 .env
-node_modules
+creds.json
+
+# dependencies
+/node_modules
+/.pnp
+.pnp.js
+
+# Yarn
+.yarn/*
+!.yarn/cache
+!.yarn/releases
+!.yarn/plugins
+!.yarn/sdks
+!.yarn/versions
+
+executables/**
