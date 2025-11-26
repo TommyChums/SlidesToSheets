@@ -16,9 +16,15 @@ const {
 const {
   MAIN_SHEET_NAME,
   NOTES_SHEET_NAME,
-  PRESENTATION_ID,
-  SPREADSHEET_ID,
+  PRESENTATION_ID: PRESENTATION_ID_ENV,
+  SPREADSHEET_ID: SPREADSHEET_ID_ENV,
 } = process.env;
+
+const presentationIdArg = process.argv[2]
+const spreadSheetIdArg = process.argv[3]
+
+const PRESENTATION_ID = presentationIdArg || PRESENTATION_ID_ENV
+const SPREADSHEET_ID = spreadSheetIdArg || SPREADSHEET_ID_ENV
 
 const updateMainSpreadSheetTitle = async (sheets, title) => {
   const updateParams = {
