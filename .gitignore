@@ -13,3 +13,5 @@ creds.json
 !.yarn/plugins
 !.yarn/sdks
 !.yarn/versions
+
+executables/**

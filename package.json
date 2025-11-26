@@ -8,7 +8,7 @@
   "bin": "index.js",
   "scripts": {
     "start": "node index.js",
-    "pkg": "pkg . --out-path executables/"
+    "pkg": "pkg . --out-path executables/ -t  node22-linux-x64,node22-linux-arm64,node22-macos-x64,node22-macos-arm64,node22-win-x64,node22-win-arm64"
   },
   "dependencies": {
     "dotenv": "^8.2.0",
