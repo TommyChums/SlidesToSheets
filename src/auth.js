@@ -9,9 +9,9 @@ const GetAuthGoogle = async () => {
       'https://www.googleapis.com/auth/drive'
     ]
   });
-  
+
   const authClient = await auth.getClient();
-  
+
   google.options({
     auth: authClient,
   });
